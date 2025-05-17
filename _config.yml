@@ -7,6 +7,7 @@ baseurl: "/test"
 description: 'The "Official" theme repository for the Bakery wiki'
 # (mapping) Left side navigation buttons, leave empty to remove them
 navButtons:
+  Home: "/"
   Test Page: "/wiki/testpage.html"
 # (boolean) disable edit functionalities (edit/delete/add pages)
 disable_edit: false
