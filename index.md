@@ -4,6 +4,7 @@
 [This is a link](example)  
 # Test header1
 ---
+{{ site.github.repository_url }}/edit/{{site.git_branch | escape}}/{{ site.site_root | default: '/' }}{{page.path | escape}}
 This is a test page showing every single component, element or piece of formatting in one place.
 
 # Text blocks
