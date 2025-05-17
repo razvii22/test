@@ -1,0 +1,43 @@
+<div class="TopBar">
+    <div class="left-buttons" buttons>
+        {% for key in site.navButtons %}
+        <div class="NavButton">
+            <a href={{site.baseurl}}{{ key[1] }} >
+                {{key[0]}}
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="center-buttons">
+        <div class="NavButton2">
+            <input id="search-input" type="text" placeholder="Search Wiki">
+            <ul id="results"></ul>
+        </div>
+        <div class="NavButton3">
+            <button type="button" data-theme-toggle class="LightDark">
+            </button>
+        
+        </div>
+    </div>
+    {% include bakery-wiki/pageActions.html %}
+</div>
+<!-- script pointing to jekyll-search.js -->
+<script src="{{ '/assets/js/simple-jekyll-search.min.js' | relative_url }}"></script>
+<script async src="{{ 'assets/js/searchdata.js' | relative_url }}"></script>
+<script>
+    const input = document.getElementById("search-input");
+    const results = document.getElementById("results");
+    results.style.visibility = "hidden"
+    input.addEventListener("focus", () => {
+        if (input.value.trim() !== "") {
+            results.style.visibility = "visible"
+        }
+    });
+    input.addEventListener("input", () => {
+        if (input.value.trim() !== "") {
+            results.style.visibility = "visible"
+        }else {
+            results.style.visibility = "hidden"
+        }
+    });
+</script>
