@@ -144,21 +144,19 @@ a {
 /* =================================================================================================== */
 /* TABLES */
 
-.table {
-    max-width: 100%;
-    overflow: scroll;
-    clear: both;
-}
-
 table, th, td {
     box-sizing: border-box;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
 }
 table {
+    display: block;
+    overflow: scroll;
+    clear: both;
     font-family: "B612 Mono";
     margin: 1.5rem 0 1.5rem 0;
-    max-width: calc(100vw - 340px - 50px);
+    width: 100px;
+    width: calc(100vw - var(--SBarWidth) - 50px);
 }
 td {
     background-color: var(--Blockquote);
@@ -186,28 +184,20 @@ th, caption {
     text-align: center;
 }
 
-.info table {
+.info {
+    display: grid;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
     font-family: "B612 Mono";
     margin: 0 0 0 0;
     max-width: 300px;
     border-spacing: 0;
-}
-
-.info {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
     max-width: 320px;
-}
-
-.info div {
     background-color: var(--Blockquote);
     border-left: 3px solid var(--Accent);
     border-right: 3px solid var(--Accent);
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    justify-items: center;
     margin: 0 1px 0 1px;
     padding: 2px;
     word-break: break-all;
@@ -386,7 +376,7 @@ menu {
     margin-top: 0;
     align-self: flex-start;
     position: sticky;
-    top: calc(50px + 20px + 0.2vh);
+    top: calc(70px + 0.2vh);
     flex-basis: calc(var(--SBarWidth) - 00.1rem);
     order: 2;
     padding: 10px;
@@ -447,11 +437,11 @@ img{
 }
 [lr="left"]{
     float: left;
-    margin: 2px;
+    margin: 5px;
 }
 [lr="right"]{
     float: right;
-    margin: 2px;
+    margin: 5px;
     margin-left: 19px;
 }
 [lr]::after{
@@ -608,7 +598,7 @@ td.gutter{
         float: none;
         clear: both;
     }
-    .table{
+    table {
         clear: both;
         max-width: 100%;
         overflow: scroll;
