@@ -600,8 +600,7 @@ td.gutter{
     }
     table {
         clear: both;
-        max-width: 100%;
-        overflow: scroll;
+        width: 100%;
     }
 
     .info{
