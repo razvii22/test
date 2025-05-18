@@ -6,30 +6,30 @@
         The if statements avoid asigning empty variables, which chromium browsers do not like, at all, chromium sucks. {% endcomment %}
         {% comment %}============================================================================================== {% endcomment %}
   {% if page.accent-light %}
-    <style>
-      body {
-        --accent-light: {{ page.accent-light }};
-      }
-    </style>
+  <style>
+    body {
+      --accent-light: {{ page.accent-light }};
+    }
+  </style>
   {% endif %}
   {% if page.accent-dark %}
-    <style>
-      body {
-        --accent-dark: {{ page.accent-dark }};
-      }
-    </style>
+  <style>
+    body {
+      --accent-dark: {{ page.accent-dark }};
+    }
+  </style>
   {% endif %}
   {% comment %}============================================================================================== {% endcomment %}
   <body data-theme>
     {% include bakery-wiki/navBar.html %}
     {% comment %} Add the sidebar unless the page has it disabled {% endcomment %}
     {% if page.sidebar != false %}
-        <div class="SideBar">
-            {% include bakery-wiki/toc/toc-lib.html title="Contents:" minHeaders=1 html=content sanitize=true class="SideBar" id="git-wiki-toc" h_min=1 h_max=3 %}
-        </div>
+    <menu>
+        {% include bakery-wiki/toc/toc-lib.html title=" " minHeaders=1 html=content sanitize=true class="SideBar" id="git-wiki-toc" h_min=1 h_max=3 %}
+    </menu>
     {% endif %}
-    <div class="Content">
+    <main>
         {{ content }}
-    </div>
+    </main>
   </body>
 </html>

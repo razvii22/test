@@ -1,26 +1,22 @@
-<div class="TopBar">
-    <div class="left-buttons" buttons>
+<nav>
+    <div>
         {% for key in site.navButtons %}
-        <div class="NavButton">
-            <a href={{site.baseurl}}{{ key[1] }} >
+        <button>
+            <a href={{site.baseurl}}{{ key[1] }}>
                 {{key[0]}}
             </a>
-        </div>
+        </button>
         {% endfor %}
     </div>
-    <div class="center-buttons">
-        <div class="NavButton2">
+    <span>
+        <search>
             <input id="search-input" type="text" placeholder="Search Wiki">
-            <ul id="results"></ul>
-        </div>
-        <div class="NavButton3">
-            <button type="button" data-theme-toggle class="LightDark">
-            </button>
-        
-        </div>
-    </div>
+        </search>
+        <button class="LightDark" data-theme-toggle="">
+        </button>
+    </span>
     {% include bakery-wiki/pageActions.html %}
-</div>
+</nav>
 <!-- script pointing to jekyll-search.js -->
 <script src="{{ '/assets/js/simple-jekyll-search.min.js' | relative_url }}"></script>
 <script async src="{{ 'assets/js/searchdata.js' | relative_url }}"></script>

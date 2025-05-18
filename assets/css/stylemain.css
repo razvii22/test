@@ -10,48 +10,64 @@
     --A2: rgb(232, 192, 46);
     /* ============================================================================================== */
     /* DARK MODE */
+    --LDOne: #FFFFFF;
+    --LDTwo: #000000;
     --Sidebar: #101010;
     --Content: #201f1f;
+    --TopBar: var(--Content);
+    --TopBarButtons: var(--Sidebar);
     --Blockquote: #1b1b1b;
     --BlockquoteD: #191919;
+    --Gradient: var(--Sidebar);
+    --SearchBar: var(--BlockquoteD);
     --Resultsbox: #151515ea;
+    --ResultsDark: rgba(0, 0, 0, 0.132);
+    --ResultsBorder: var(--Sidebar);
     --Background: rgb(32, 32, 32);
     --Text: whitesmoke;
     --NavButton: rgb(22, 2, 2);
+    --CodeBorder: var(--Highlight);
     --Highlight: #727272;
     --Highlight2: #949494;
+    --Highlight3: var(--Text);
     --SbarBorder: rgb(32, 32, 32);
     --Shadow: rgba(0, 0, 0, 0.226);
-    --SBarWidth: 320px;
-    --TBarHeight: 50px;
-    overscroll-behavior: none;
-    --LDOne: #101010;
-    --LDTwo: whitesmoke;
+    --CodeBlock: rgb(7, 8, 46);
 }
 
 [data-theme="light"] {
     /* ============================================================================================= */
     /* LIGHT MODE */
     --Accent: var(--accent-light);
-    --Sidebar: #f7f7f7;
-    --Content: #fbfbfb;
+    --Accent2: var(--accent-dark);
+    --LDOne: #000000;
+    --LDTwo: var(--SearchBar);
+    --Sidebar: var(--Content);
+    --Content: #f5f2f2;
+    --TopBar: var(--Background);
+    --TopBarButtons: var(--Background);
     --Blockquote: #f5f2f2;
-    --BlockquoteD: #e8e8e8;
-    --Resultsbox: #b2b2b2ea;
+    --BlockquoteD: #ebebe5;
+    --Gradient: #e1e3d8;
+    --SearchBar: var(--ResultsDark);
+    --Resultsbox: #f1f1f1;
+    --ResultsDark: #f4f4f4;
+    --ResultsBorder: var(--Accent);
     --Background: rgb(236, 236, 236);
     --Text: rgb(0, 0, 0);
     --NavButton: rgb(236, 236, 236);
-    --Highlight: #f0f0f0;
-    --Highlight2: #f1f1f1;
-    --SbarBorder: rgb(222, 222, 222);
-    --Shadow: rgba(196, 196, 196, 0.046);
-    --LDTwo: #101010;
-    --LDOne: whitesmoke;
+    --CodeBorder:var(--Text);
+    --Highlight: #aeaeae;
+    --Highlight2: #ece9e9;
+    --Highlight3: var(--Highlight2);
+    --SbarBorder: rgb(236, 236, 236);
+    --Shadow: rgba(184, 184, 184, 0.094);
+    --CodeBlock: rgb(40, 45, 116);
     /* ============================================================================================= */
 }
 body{
-    /* CSS doesn't like chaining variables, so this has to be assigned in body instead of root */
     --Accent: var(--accent-dark);
+    --Accent2: var(--accent-light);
     display: flex;
     flex-flow: row;
     align-items: stretch;
@@ -67,7 +83,7 @@ body{
 /* ================================================================================================== */
 /* SCROLLBAR */
 
-::-webkit-scrollbar{
+::-webkit-scrollbar {
     z-index: 1;
     width: 5px;
     height: 5px;
@@ -85,24 +101,29 @@ h1{
     margin: 0;
     font-family: "Exo 2";
 }
+
 h2{
     margin: 0;
     font-family: "Exo 2";
 }
-h3{
+
+h3 {
     margin: 0;
     font-family: "Exo 2";
 }
-h4{
+
+h4 {
     margin: 0;
     font-family: "Exo 2";
     /* width: 100%; */
 }
-h5{
+
+h5 {
     margin: 0;
     font-family: "Exo 2";
 }
-h6{
+
+h6 {
     margin: 0;
     font-family: "Exo 2";
 }
@@ -110,30 +131,36 @@ h6{
 /* ================================================================================================== */
 /* MISC */
 
-hr{
+hr {
     color: var(--Sidebar);
     border-radius: 2px;
     border-top: var(--Sidebar) solid 2px;
     border-bottom: var(--Accent) solid 1px;
 }
-a{
+a {
     color: rgb(232, 157, 46);
     text-decoration: dotted;
 }
 /* =================================================================================================== */
 /* TABLES */
 
-table, th, td{
+.table {
+    max-width: 100%;
+    overflow: scroll;
+    clear: both;
+}
+
+table, th, td {
     box-sizing: border-box;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
 }
-table{
+table {
     font-family: "B612 Mono";
     margin: 1.5rem 0 1.5rem 0;
     max-width: calc(100vw - 340px - 50px);
 }
-td{
+td {
     background-color: var(--Blockquote);
     padding: 10px;
     font-style: italic;
@@ -141,14 +168,16 @@ td{
     border-right: 3px solid var(--Accent);
     text-align: center;
 }
-th, caption{
+th, caption {
     font-weight: 700;
     background-color: var(--BlockquoteD);
     padding: 0.5rem 20px 0.5rem 20px; /*Top Right Bottom Left*/
     text-align: center;
 }
+
 /* INFO TABLES */
-.info td{
+
+.info td {
     background-color: var(--Blockquote);
     padding: 0px;
     font-style: italic;
@@ -156,18 +185,21 @@ th, caption{
     border-right: 3px solid var(--Accent);
     text-align: center;
 }
-.info table{
+
+.info table {
     font-family: "B612 Mono";
     margin: 0 0 0 0;
     max-width: 300px;
     border-spacing: 0;
 }
-.info{
+
+.info {
     display: grid;
     grid-template-columns: 1fr 2fr;
     max-width: 320px;
 }
-.info div{
+
+.info div {
     background-color: var(--Blockquote);
     border-left: 3px solid var(--Accent);
     border-right: 3px solid var(--Accent);
@@ -181,11 +213,11 @@ th, caption{
     word-break: break-all;
     overflow: hidden;
 }
-.info img{
+.info img {
     margin: 0px;
     max-width: 300px;
 }
-.infowide{
+.infowide {
     grid-column: 1 / span 2;
     padding: 10px;
     background-color: var(--BlockquoteD);
@@ -194,7 +226,7 @@ th, caption{
 /* ================================================================================================== */
 /* BLOCKQUOTES */
 
-blockquote{
+blockquote {
     background-color: var(--Blockquote);
     font-style: italic;
     padding: 10px;
@@ -207,30 +239,31 @@ blockquote{
     clear: both;
 }
 
-blockquote[blame]::after{
+blockquote[blame]::after {
     content: "- " attr(blame);
     color: var(--Accent);
     margin-left: auto;
 }
 
-blockquote p{
+blockquote p {
     margin: 0;
 }
 
-blockquote[gradient]{
+[gradient] {
     background-color: transparent;
     padding-right: 150px;
     border-right: none;
-    background-image: linear-gradient(to right, var(--Sidebar), transparent);
+    background-image: linear-gradient(to right, var(--Gradient), transparent);
 }
+
 /* ================================================================================================= */
 /* NAVIGATION */
 
-.TopBar{
+nav {
     max-width: calc(100% - 20px);
     font-family: "Exo 2";
     z-index: 3;
-    background-color: var(--Content);
+    background-color: var(--TopBar);
     position: sticky;
     top: 0;
     margin-bottom: auto;
@@ -244,52 +277,66 @@ blockquote[gradient]{
     box-shadow: 0 5px var(--Shadow);
     align-items: center;
 }
-.TopBar div{
+
+nav > div , nav > span {
     display: inline-flex;
 }
-.left-buttons{
+nav button , search {
+    border: none;
+    height: fit-content;
+    text-overflow: clip;
+    white-space: nowrap;
+    overflow: hidden;
+    border-left: 5px solid var(--Accent);
+    margin: 0.2rem;
+    padding: 0.3rem 0.3rem 0.3rem 0.3rem;
+    font-size: 1.3rem;
+}
+
+nav > div:first-of-type {
     justify-content: left;
 }
-.center-buttons{
-    justify-content: center;
-    overflow: hidden;
-}
-.right-buttons{
+nav > div:last-of-type {
     justify-content: right;
 }
-.NavButton{
-    font-size: 1.3rem;
-    background-color: var(--Sidebar);
-    margin: 0.2rem;
-    padding: 0.3rem 0.3rem 0.3rem 0.3rem;
-    border-left: 5px solid var(--Accent);
-    height: fit-content;
-    text-overflow: clip;
-    white-space: nowrap;
+
+nav > span {
+    justify-content: center;
+    align-items: center;
     overflow: hidden;
 }
-.NavButton2{
-    font-size: 1.3rem;
-    background-color: var(--BlockquoteD);
-    margin: 0.2rem;
-    padding: 0.3rem 0.3rem 0.3rem 0.3rem;
-    border-left: 5px solid var(--Accent);
-    height: fit-content;
-    text-overflow: clip;
-    white-space: nowrap;
-    overflow: hidden;
+
+nav > div > button {
+    background-color: var(--TopBarButtons);
+   
 }
-input{
+
+button:hover , search:hover {
+    border-left: 5px solid var(--Accent2);
+}
+button:active {
+    border-left: 5px solid var(--TopBar);
+}
+
+/* SEARCH BAR */
+
+search {
+    background-color: var(--SearchBar);
+}
+
+input {
     font-size: 1.3rem;
     border:none;
     background-color: transparent;
     color: var(--Text);
 }
+
 input:focus, textarea {
     outline: none !important;
     color: var(--Accent);
 }
-#results{
+
+#results {
     display: flex;
     flex-direction: column;
     position: absolute;
@@ -303,42 +350,40 @@ input:focus, textarea {
     background-color: var(--Resultsbox);
     list-style-type: none;
     text-align: left;
-    border: 5px solid var(--Sidebar);
-    /* overflow: hidden; */
+    border: 2px solid var(--ResultsBorder);
+    border-top: none;
     white-space: normal;
     word-wrap: break-word;
     word-break: break-all;
 }
-#results li:nth-of-type(2n){
-    background-color: rgba(0, 0, 0, 0.132);
+
+#results li:nth-of-type(2n) {
+    background-color: var(--ResultsDark);
 }
 
-.i-testing{
+.i-testing {
     display: inline-block;
     width: 100px;
 }
-.NavButton3{
-    align-items: center;
-}
-button.LightDark{
+
+button.LightDark {
     height: 30px;
     width: 30px;
     box-sizing: border-box;
     border-radius: 50%;
-    border: 2px solid var(--LDTwo);
+    border: 2px solid var(--LDOne);
     background-image: linear-gradient(to right, var(--LDOne) 0%, var(--LDOne) 50%, var(--LDTwo) 50%, var(--LDTwo) 100%);
 }
 
 /* ================================================================================================= */
 /* SIDEBAR */
 
-.SideBar::-webkit-scrollbar{
-display: none;
-}
-.SideBar{
-    font-size: 1rem;
+menu {
+    align-items: flex-start;
+    display: flex;
     z-index: 2;
     background-color: var(--Sidebar);
+    margin-top: 0;
     align-self: flex-start;
     position: sticky;
     top: calc(50px + 20px + 0.2vh);
@@ -346,26 +391,33 @@ display: none;
     order: 2;
     padding: 10px;
     height: calc(99.8vh - 90px);
+    font-size: 0.9rem;
     overflow-wrap: break-word;
-    word-break: break-all;
     overflow-y: scroll;
     border-right: 0.1rem solid var(--SbarBorder);
     -ms-overflow-style: none;
     scrollbar-width: none;
 }
-.SideBar li{
+
+menu::-webkit-scrollbar {
+    display: none;
+}
+
+menu li {
     list-style-type: square;
 }
-.SideBar li::marker{
+menu li::marker {
     color: var(--A1);
 }
-.SideBar li:nth-of-type(2n) a{
+menu li:nth-of-type(2n) a {
     color: var(--A2);
 }
-.SideBar li li{
+
+menu li li {
     list-style-type: none;
 }
-.SideBar li ul{
+
+menu li ul {
     box-sizing: content-box;
     padding-left: 5px;
     border-left: 3px solid var(--A1);
@@ -375,18 +427,21 @@ display: none;
 /* ================================================================================================== */
 /* CONTENT */
 
-.Content{
+main {
     z-index: 1;
     width: calc(100vw - 360px - 00.2rem);
+    max-width: calc(100vw - 360px - 00.2rem);
     order: 3;
     margin-left: auto;
     margin-right: auto;
     background-color: var(--Content);
-    padding: 10px;
-    border-top: 0.1rem solid var(--Background);
+    padding: 0.1rem;
+    border-top: 2px solid var(--Background);
     flex-shrink: 2;
 }
+
 /* IMAGES */
+
 img{
     margin-top: 1rem;
 }
@@ -409,58 +464,69 @@ img{
 
 /* CODE */
 
-figure.highlight{
-    width: 80%;
-    margin: 0 auto 0 auto;
+/* BASIC CODE BLOCK */
+
+p code{
+    height: fit-content;
+    width: fit-content;
+    color: var(--Highlight3);
+    background-color: var(--CodeBlock);
+    border: 2px solid var(--CodeBorder);
+    padding: 0 5px 0 5px;
+    font-size: 0.8em;
+}
+
+/* HIGHLIGHTED CODE BLOCKS */
+
+figure.highlight, figure.highlighter-rouge{
     display: flex;
     align-items: top;
+    justify-content: right;
+    position: relative;
+    margin: 10px auto 10px auto;
+    overflow: scroll;
     justify-content: left;
-    background-color: var(--BlockquoteD);
-    border: 2px solid var(--Highlight);
-    border-top: none;
-    padding: 10px;
-}
-div.highlight{
-    width: 80%;
-    margin: 0 auto 0 auto;
-    display: flex;
-    align-items: top;
-    justify-content: left;
-    background-color: var(--BlockquoteD);
-    border: 2px solid var(--Highlight);
-    border-top: none;
-    padding: 10px;
-}
-.highlight pre{
-    margin: 0;
-}
-.highlight code{
+    background-color: var(--CodeBlock);
+    border: 2px solid var(--CodeBorder);
+    padding: 5px;
     color: var(--Highlight2);
     font-size: 0.9rem;
 }
-.highlighter-rouge::before{
-    content:attr(data-lang);
-    color: var(--Highlight);
-    font-size: 0.9rem;
-    width: 80%;
-    margin: 0 auto 0 auto;
-    display: flex;
-    border-top: 2px solid var(--Accent);
-    justify-content: right;
-    background-color: var(--BlockquoteD);
-    border-left: 2px solid var(--Highlight);
-    border-right: 2px solid var(--Highlight);
-    padding: 10px;
+div.highlight{
+    width: 100%;
+    overflow: scroll;
+    padding: 0 0 10px 0;
 }
+.highlight pre{
+    margin: 10px 0 0 0;
+}
+
+/* LANGUAGE DECLARATIONS */
+.highlight figcaption, .highlighter-rouge figcaption{
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin: 0;
+    padding: 0 10px 0 5px;
+    text-align: right;
+    font-size: 0.9rem;
+    color: var(--Highlight);
+}
+.highlight figcaption::first-letter, .highlighter-rouge figcaption::first-letter{
+    text-transform: capitalize;
+}
+
+/* CODE BLCOKS WITH LINE NUMBERING */
+
 table.rouge-table{
     border: none;
-    background-color: none;
+    background-color: transparent;
     margin: 0;
     padding: 0;
 }
 .rouge-table td{
     border: none;
-    background-color: none;
+    background-color: transparent;
     text-align: left;
     font-style: normal;
     padding: 0 0 0 5px;
@@ -473,20 +539,23 @@ td.gutter{
 /* =============================================================================================== */
 /* MOBILE DISPLAY */
 
-@media(max-width: 800px){
-    .SideBar{
+@media(max-width: 800px) {
+
+    menu {
         display: none;
     }
-    .Content{
-        max-width: calc(100vw - 20px);
-        width: calc(100% - 20px);
+
+    main {
+        width: calc(100vw - 30px);
+        max-width:calc(100vw - 30px);
         display: grid;
         grid-template-columns: 100%;
-        justify-items: center;
-        /* justify-content: center; */
+        justify-items: left;
         overflow-x: hidden;
+        padding: 10px;
     }
-    .Content::after{
+
+    main::after {
         height: 70px;
         content: '';
         width: 100%;
@@ -494,23 +563,25 @@ td.gutter{
         display: block;
         background-color: var(--Content);
     }
-    img{
+
+    img {
         max-width: 100%;
         height: auto;
         /* margin-top: 5px; */
     }
-    .TopBar{
+
+    nav {
         display: flex;
         justify-content: center;
     }
-    div[buttons]{
+    nav > div:last-of-type {
         display: none;
         
     }
-    div.left-buttons{
+
+    nav > div:first-of-type {
         position: fixed;
         bottom: 0px;
-        /* height: 100%; */
         display: flex;
         font-size: 2rem;
         justify-content: center;
@@ -518,7 +589,7 @@ td.gutter{
         padding: 10px;
         background-color: var(--Sidebar);
     }
-    .navbutton{
+    nav > div {
         width: 20%;
         text-align: center;
         justify-content: center;
@@ -540,9 +611,10 @@ td.gutter{
     .table{
         clear: both;
         max-width: 100%;
-        overflow-x: scroll;
+        overflow: scroll;
     }
-    div.info{
+
+    .info{
         width: fit-content;
     }
 }

@@ -9,6 +9,12 @@ description: 'The "Official" theme repository for the Bakery wiki'
 navButtons:
   Home: "/"
   Test Page: "/wiki/testpage.html"
+# HACK Github stuff, using jekyll-github-metadata seems wasteful when we're only using a few variables.
+# (string) repo url: user/repo
+github:
+  repository_url: "razvii22/test"
+# (string) Specify branch rendered by gitpages allowing wiki tool buttons to work
+git_branch: "main"
 # (boolean) disable edit functionalities (edit/delete/add pages)
 disable_edit: false
 # (boolean) Enable/disable wiki page list in sidebar
@@ -25,20 +31,8 @@ show_wiki_posts_limit: 10
 paginate: 5
 paginate_path: "/assets/blog/page:num"
 permalink: /assets/blog/posts/:year/:month/:day/:title:output_ext
-# (boolean) Enable/disable download buttons in sidebar
-show_downloads: true
-# (string) Specify branch rendered by gitpages allowing wiki tool buttons to work
-git_branch: "master"
-# (string) The UA-XXXXX-Y code from google analytic to enable GA on your wiki
-google_analytics: 
-# (string) folder where wiki pages are stored, it's needed for tool buttons
+# (string) folder where wiki pages are stored, it's needed for tool buttons (Kept for git wiki theme)
 wiki_folder: "wiki"
-# (boolean) if you're using github wiki as submodule then this config
-# must be enabled to allow tool buttons to work properly
-use_github_wiki: false
-# (boolean) Enable "Edit with Prose.io" button in tools, it's a 3rd party
-# service to edit github markdown pages easily
-use_prose_io: true
 # Select search_engine component from:
 # - js: it uses a built in javascript component that uses generated js object
 # - js_rss: it uses a built in javascript component that uses generated  sitemap_full.xml to search inside your wiki with lunr library (slow and experimental)
