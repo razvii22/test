@@ -5,6 +5,8 @@ accent-light: green
 {% include bakery-wiki/components/charCard.html title="UwU" imageURL="https://yt3.ggpht.com/IXnjZR-4D2JX8HjIwZloE088y2taeis8YFpR-NFaP2N_6P7z4JI3cc6SEg-N-iOGAeyP3zanFw=s600-c-k-c0x00ffffff-no-rj-rp-mo"  %}
 
 
+{% avatar razvii22 %}
+
 [This is a link](example)  
 # Test header1
 ---
